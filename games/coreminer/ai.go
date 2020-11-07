@@ -58,6 +58,61 @@ func (ai *AI) Ended(won bool, reason string) {
 func (ai *AI) RunTurn() bool {
 	// <<-- Creer-Merge: runTurn -->>
 	// Put your game logic here for runTurn
+
+	// If we have no miners and can afford one, spawn one
+	if len(ai.Player().Miners()) < 1 && ai.Player().Money() >= ai.Game().SpawnPrice() {
+		ai.Player().SpawnMiner()
+	}
+
+	// For each of our miners
+	for _, miner := range ai.Player().Miners() {
+		if miner == nil || miner.Tile() == nil {
+			continue
+		}
+
+		// Move to tile next to base
+		if miner.Tile().IsBase() {
+			if miner.Tile().TileEast() != nil {
+				miner.Move(miner.Tile().TileEast())
+			} else {
+				miner.Move(miner.Tile().TileWest())
+			}
+		}
+
+		// Sell all materials
+		sellTile := ai.Game().GetTileAt(ai.Player().BaseTile().X(), miner.Tile().Y())
+		if sellTile != nil && sellTile.Owner() == ai.Player() {
+			miner.Dump(sellTile, "dirt", -1)
+			miner.Dump(sellTile, "ore", -1)
+		}
+
+		eastTile := miner.Tile().TileEast()
+		westTile := miner.Tile().TileWest()
+
+		// Mine east and west tiles, hopper side first
+		if eastTile.X() == ai.Player().BaseTile().X() {
+			if eastTile != nil {
+				miner.Mine(eastTile, -1)
+			}
+			if westTile != nil {
+				miner.Mine(westTile, -1)
+			}
+		} else {
+			if westTile != nil {
+				miner.Mine(westTile, -1)
+			}
+			if eastTile != nil {
+				miner.Mine(eastTile, -1)
+			}
+		}
+
+		// Check to make sure east and west tiles are mined
+		if (eastTile != nil && eastTile.Ore()+eastTile.Dirt() == 0) && (westTile != nil && westTile.Ore()+westTile.Dirt() == 0) {
+			if miner.Tile().TileSouth() != nil {
+				miner.Mine(miner.Tile().TileSouth(), -1)
+			}
+		}
+	}
 	return true
 	// <<-- /Creer-Merge: runTurn -->>
 }
