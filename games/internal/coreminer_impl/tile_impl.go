@@ -261,7 +261,7 @@ func (tileImpl *TileImpl) GetNeighbors() []coreminer.Tile {
 // IsPathable returns if the Tile is pathable for FindPath
 func (tileImpl *TileImpl) IsPathable() bool {
 	// <<-- Creer-Merge: is-pathable -->>
-	return false // TODO: developer add game logic here!
+	return tileImpl.dirtImpl+tileImpl.oreImpl <= 0
 	// <<-- /Creer-Merge: is-pathable -->>
 }
 
