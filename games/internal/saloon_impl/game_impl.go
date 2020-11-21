@@ -30,7 +30,7 @@ type GameImpl struct {
 	sharpshooterDamageImpl int64
 	siestaLengthImpl       int64
 	tilesImpl              []saloon.Tile
-	timeAddedPerTurnImpl   int64
+	timeAddedPerTurnImpl   float64
 	turnsDrunkImpl         int64
 }
 
@@ -146,7 +146,7 @@ func (gameImpl *GameImpl) Tiles() []saloon.Tile {
 
 // TimeAddedPerTurn returns the amount of time (in nano-seconds) added
 // after each player performs a turn.
-func (gameImpl *GameImpl) TimeAddedPerTurn() int64 {
+func (gameImpl *GameImpl) TimeAddedPerTurn() float64 {
 	return gameImpl.timeAddedPerTurnImpl
 }
 
@@ -265,7 +265,7 @@ func (gameImpl *GameImpl) DeltaMerge(
 		gameImpl.tilesImpl = saloonDeltaMerge.ArrayOfTile(&gameImpl.tilesImpl, delta)
 		return true, nil
 	case "timeAddedPerTurn":
-		gameImpl.timeAddedPerTurnImpl = saloonDeltaMerge.Int(delta)
+		gameImpl.timeAddedPerTurnImpl = saloonDeltaMerge.Float(delta)
 		return true, nil
 	case "turnsDrunk":
 		gameImpl.turnsDrunkImpl = saloonDeltaMerge.Int(delta)

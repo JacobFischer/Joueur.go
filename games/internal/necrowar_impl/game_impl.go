@@ -24,7 +24,7 @@ type GameImpl struct {
 	riverPhaseImpl          int64
 	sessionImpl             string
 	tilesImpl               []necrowar.Tile
-	timeAddedPerTurnImpl    int64
+	timeAddedPerTurnImpl    float64
 	towerJobsImpl           []necrowar.TowerJob
 	towersImpl              []necrowar.Tower
 	unitJobsImpl            []necrowar.UnitJob
@@ -111,7 +111,7 @@ func (gameImpl *GameImpl) Tiles() []necrowar.Tile {
 
 // TimeAddedPerTurn returns the amount of time (in nano-seconds) added
 // after each player performs a turn.
-func (gameImpl *GameImpl) TimeAddedPerTurn() int64 {
+func (gameImpl *GameImpl) TimeAddedPerTurn() float64 {
 	return gameImpl.timeAddedPerTurnImpl
 }
 
@@ -223,7 +223,7 @@ func (gameImpl *GameImpl) DeltaMerge(
 		gameImpl.tilesImpl = necrowarDeltaMerge.ArrayOfTile(&gameImpl.tilesImpl, delta)
 		return true, nil
 	case "timeAddedPerTurn":
-		gameImpl.timeAddedPerTurnImpl = necrowarDeltaMerge.Int(delta)
+		gameImpl.timeAddedPerTurnImpl = necrowarDeltaMerge.Float(delta)
 		return true, nil
 	case "towerJobs":
 		gameImpl.towerJobsImpl = necrowarDeltaMerge.ArrayOfTowerJob(&gameImpl.towerJobsImpl, delta)

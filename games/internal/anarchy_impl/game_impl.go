@@ -26,7 +26,7 @@ type GameImpl struct {
 	nextForecastImpl         anarchy.Forecast
 	playersImpl              []anarchy.Player
 	sessionImpl              string
-	timeAddedPerTurnImpl     int64
+	timeAddedPerTurnImpl     float64
 }
 
 // BaseBribesPerTurn returns how many bribes players get at the beginning
@@ -121,7 +121,7 @@ func (gameImpl *GameImpl) Session() string {
 
 // TimeAddedPerTurn returns the amount of time (in nano-seconds) added
 // after each player performs a turn.
-func (gameImpl *GameImpl) TimeAddedPerTurn() int64 {
+func (gameImpl *GameImpl) TimeAddedPerTurn() float64 {
 	return gameImpl.timeAddedPerTurnImpl
 }
 
@@ -217,7 +217,7 @@ func (gameImpl *GameImpl) DeltaMerge(
 		gameImpl.sessionImpl = anarchyDeltaMerge.String(delta)
 		return true, nil
 	case "timeAddedPerTurn":
-		gameImpl.timeAddedPerTurnImpl = anarchyDeltaMerge.Int(delta)
+		gameImpl.timeAddedPerTurnImpl = anarchyDeltaMerge.Float(delta)
 		return true, nil
 	}
 

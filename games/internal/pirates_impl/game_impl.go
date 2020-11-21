@@ -37,7 +37,7 @@ type GameImpl struct {
 	shipMovesImpl            int64
 	shipRangeImpl            float64
 	tilesImpl                []pirates.Tile
-	timeAddedPerTurnImpl     int64
+	timeAddedPerTurnImpl     float64
 	unitsImpl                []pirates.Unit
 }
 
@@ -188,7 +188,7 @@ func (gameImpl *GameImpl) Tiles() []pirates.Tile {
 
 // TimeAddedPerTurn returns the amount of time (in nano-seconds) added
 // after each player performs a turn.
-func (gameImpl *GameImpl) TimeAddedPerTurn() int64 {
+func (gameImpl *GameImpl) TimeAddedPerTurn() float64 {
 	return gameImpl.timeAddedPerTurnImpl
 }
 
@@ -335,7 +335,7 @@ func (gameImpl *GameImpl) DeltaMerge(
 		gameImpl.tilesImpl = piratesDeltaMerge.ArrayOfTile(&gameImpl.tilesImpl, delta)
 		return true, nil
 	case "timeAddedPerTurn":
-		gameImpl.timeAddedPerTurnImpl = piratesDeltaMerge.Int(delta)
+		gameImpl.timeAddedPerTurnImpl = piratesDeltaMerge.Float(delta)
 		return true, nil
 	case "units":
 		gameImpl.unitsImpl = piratesDeltaMerge.ArrayOfUnit(&gameImpl.unitsImpl, delta)

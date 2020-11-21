@@ -19,7 +19,7 @@ func (*CheckersNamespace) Name() string {
 
 // Version returns the current version hash as last generated for the Checkers game.
 func (*CheckersNamespace) Version() string {
-	return "49f1e5586cc4c62b6f74081e803d8edf9f54e8315f221c62c638f963cea8ab31"
+	return "058f72f60344eb5c9e24a616bb1a8ffffb85960250956b3f3db2375484309610"
 }
 
 // PlayerName returns the desired name of the AI in the Checkers game.

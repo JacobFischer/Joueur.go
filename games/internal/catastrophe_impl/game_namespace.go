@@ -19,7 +19,7 @@ func (*CatastropheNamespace) Name() string {
 
 // Version returns the current version hash as last generated for the Catastrophe game.
 func (*CatastropheNamespace) Version() string {
-	return "ede84ab86376b00287c09558f05e8f2a61b92109d93aad9ebd3379ff4215fb53"
+	return "9505c0bbaa492df4d508af97a43145523484bdaf07c13499b4e0f10c3560ba27"
 }
 
 // PlayerName returns the desired name of the AI in the Catastrophe game.

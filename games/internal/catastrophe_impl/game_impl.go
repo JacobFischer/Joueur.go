@@ -31,7 +31,7 @@ type GameImpl struct {
 	starvingEnergyMultImpl   float64
 	structuresImpl           []catastrophe.Structure
 	tilesImpl                []catastrophe.Tile
-	timeAddedPerTurnImpl     int64
+	timeAddedPerTurnImpl     float64
 	turnsBetweenHarvestsImpl int64
 	turnsToCreateHumanImpl   int64
 	turnsToLowerHarvestImpl  int64
@@ -155,7 +155,7 @@ func (gameImpl *GameImpl) Tiles() []catastrophe.Tile {
 
 // TimeAddedPerTurn returns the amount of time (in nano-seconds) added
 // after each player performs a turn.
-func (gameImpl *GameImpl) TimeAddedPerTurn() int64 {
+func (gameImpl *GameImpl) TimeAddedPerTurn() float64 {
 	return gameImpl.timeAddedPerTurnImpl
 }
 
@@ -304,7 +304,7 @@ func (gameImpl *GameImpl) DeltaMerge(
 		gameImpl.tilesImpl = catastropheDeltaMerge.ArrayOfTile(&gameImpl.tilesImpl, delta)
 		return true, nil
 	case "timeAddedPerTurn":
-		gameImpl.timeAddedPerTurnImpl = catastropheDeltaMerge.Int(delta)
+		gameImpl.timeAddedPerTurnImpl = catastropheDeltaMerge.Float(delta)
 		return true, nil
 	case "turnsBetweenHarvests":
 		gameImpl.turnsBetweenHarvestsImpl = catastropheDeltaMerge.Int(delta)

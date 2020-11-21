@@ -88,7 +88,7 @@ type Game interface {
 
 	// TimeAddedPerTurn is the amount of time (in nano-seconds) added
 	// after each player performs a turn.
-	TimeAddedPerTurn() int64
+	TimeAddedPerTurn() float64
 
 	// TurnsBetweenHarvests is after a food tile is harvested, the
 	// number of turns before it can be harvested again.

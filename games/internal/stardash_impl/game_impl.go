@@ -41,7 +41,7 @@ type GameImpl struct {
 	shipRadiusImpl           int64
 	sizeXImpl                int64
 	sizeYImpl                int64
-	timeAddedPerTurnImpl     int64
+	timeAddedPerTurnImpl     float64
 	turnsToOrbitImpl         int64
 	unitsImpl                []stardash.Unit
 }
@@ -218,7 +218,7 @@ func (gameImpl *GameImpl) SizeY() int64 {
 
 // TimeAddedPerTurn returns the amount of time (in nano-seconds) added
 // after each player performs a turn.
-func (gameImpl *GameImpl) TimeAddedPerTurn() int64 {
+func (gameImpl *GameImpl) TimeAddedPerTurn() float64 {
 	return gameImpl.timeAddedPerTurnImpl
 }
 
@@ -387,7 +387,7 @@ func (gameImpl *GameImpl) DeltaMerge(
 		gameImpl.sizeYImpl = stardashDeltaMerge.Int(delta)
 		return true, nil
 	case "timeAddedPerTurn":
-		gameImpl.timeAddedPerTurnImpl = stardashDeltaMerge.Int(delta)
+		gameImpl.timeAddedPerTurnImpl = stardashDeltaMerge.Float(delta)
 		return true, nil
 	case "turnsToOrbit":
 		gameImpl.turnsToOrbitImpl = stardashDeltaMerge.Int(delta)

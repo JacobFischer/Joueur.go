@@ -28,7 +28,7 @@ type GameImpl struct {
 	spawnerHarvestConstantImpl float64
 	spawnerTypesImpl           []string
 	tilesImpl                  []stumped.Tile
-	timeAddedPerTurnImpl       int64
+	timeAddedPerTurnImpl       float64
 }
 
 // Beavers returns every Beaver in the game.
@@ -131,7 +131,7 @@ func (gameImpl *GameImpl) Tiles() []stumped.Tile {
 
 // TimeAddedPerTurn returns the amount of time (in nano-seconds) added
 // after each player performs a turn.
-func (gameImpl *GameImpl) TimeAddedPerTurn() int64 {
+func (gameImpl *GameImpl) TimeAddedPerTurn() float64 {
 	return gameImpl.timeAddedPerTurnImpl
 }
 
@@ -235,7 +235,7 @@ func (gameImpl *GameImpl) DeltaMerge(
 		gameImpl.tilesImpl = stumpedDeltaMerge.ArrayOfTile(&gameImpl.tilesImpl, delta)
 		return true, nil
 	case "timeAddedPerTurn":
-		gameImpl.timeAddedPerTurnImpl = stumpedDeltaMerge.Int(delta)
+		gameImpl.timeAddedPerTurnImpl = stumpedDeltaMerge.Float(delta)
 		return true, nil
 	}
 

@@ -30,7 +30,7 @@ type GameImpl struct {
 	spawnTimeImpl        int64
 	stunTimeImpl         int64
 	tilesImpl            []newtonian.Tile
-	timeAddedPerTurnImpl int64
+	timeAddedPerTurnImpl float64
 	timeImmuneImpl       int64
 	unitsImpl            []newtonian.Unit
 	victoryAmountImpl    int64
@@ -147,7 +147,7 @@ func (gameImpl *GameImpl) Tiles() []newtonian.Tile {
 
 // TimeAddedPerTurn returns the amount of time (in nano-seconds) added
 // after each player performs a turn.
-func (gameImpl *GameImpl) TimeAddedPerTurn() int64 {
+func (gameImpl *GameImpl) TimeAddedPerTurn() float64 {
 	return gameImpl.timeAddedPerTurnImpl
 }
 
@@ -278,7 +278,7 @@ func (gameImpl *GameImpl) DeltaMerge(
 		gameImpl.tilesImpl = newtonianDeltaMerge.ArrayOfTile(&gameImpl.tilesImpl, delta)
 		return true, nil
 	case "timeAddedPerTurn":
-		gameImpl.timeAddedPerTurnImpl = newtonianDeltaMerge.Int(delta)
+		gameImpl.timeAddedPerTurnImpl = newtonianDeltaMerge.Float(delta)
 		return true, nil
 	case "timeImmune":
 		gameImpl.timeImmuneImpl = newtonianDeltaMerge.Int(delta)

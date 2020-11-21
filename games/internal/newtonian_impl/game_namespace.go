@@ -19,7 +19,7 @@ func (*NewtonianNamespace) Name() string {
 
 // Version returns the current version hash as last generated for the Newtonian game.
 func (*NewtonianNamespace) Version() string {
-	return "7c19f909ee5faa0ac3faf4e989032b5a37ba94aeb5d6ae7654a15a2bb1401bbe"
+	return "bf822e1b6be1a07c0b1cb01f9014622ca1f589dffe7e1d1bdb7410d9037aafca"
 }
 
 // PlayerName returns the desired name of the AI in the Newtonian game.

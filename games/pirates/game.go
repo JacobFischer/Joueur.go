@@ -105,7 +105,7 @@ type Game interface {
 
 	// TimeAddedPerTurn is the amount of time (in nano-seconds) added
 	// after each player performs a turn.
-	TimeAddedPerTurn() int64
+	TimeAddedPerTurn() float64
 
 	// Units is every Unit in the game. Merchant units have targetPort
 	// set to a port.

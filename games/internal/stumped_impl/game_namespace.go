@@ -19,7 +19,7 @@ func (*StumpedNamespace) Name() string {
 
 // Version returns the current version hash as last generated for the Stumped game.
 func (*StumpedNamespace) Version() string {
-	return "7de307cae4a9a163a9b3600cb20c4b376b9f9cc42f1b990852878fea0127eed3"
+	return "ba3e6d5b4b3a74ff2221bafbe25f0ffe3582769a0bb993bdd09dc91a9ab030fe"
 }
 
 // PlayerName returns the desired name of the AI in the Stumped game.

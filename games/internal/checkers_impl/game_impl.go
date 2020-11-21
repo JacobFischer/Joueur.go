@@ -22,7 +22,7 @@ type GameImpl struct {
 	maxTurnsImpl           int64
 	playersImpl            []checkers.Player
 	sessionImpl            string
-	timeAddedPerTurnImpl   int64
+	timeAddedPerTurnImpl   float64
 }
 
 // BoardHeight returns the height of the board for the Y component of a
@@ -93,7 +93,7 @@ func (gameImpl *GameImpl) Session() string {
 
 // TimeAddedPerTurn returns the amount of time (in nano-seconds) added
 // after each player performs a turn.
-func (gameImpl *GameImpl) TimeAddedPerTurn() int64 {
+func (gameImpl *GameImpl) TimeAddedPerTurn() float64 {
 	return gameImpl.timeAddedPerTurnImpl
 }
 
@@ -173,7 +173,7 @@ func (gameImpl *GameImpl) DeltaMerge(
 		gameImpl.sessionImpl = checkersDeltaMerge.String(delta)
 		return true, nil
 	case "timeAddedPerTurn":
-		gameImpl.timeAddedPerTurnImpl = checkersDeltaMerge.Int(delta)
+		gameImpl.timeAddedPerTurnImpl = checkersDeltaMerge.Float(delta)
 		return true, nil
 	}
 

@@ -19,7 +19,7 @@ func (*NecrowarNamespace) Name() string {
 
 // Version returns the current version hash as last generated for the Necrowar game.
 func (*NecrowarNamespace) Version() string {
-	return "935f0e64ba290cdce31688a40bd90d1eb5375f36aeebd67482238fc0da25ef86"
+	return "bd9fe971a537abbdaf215e7409773ec851edb87af72f54bb4da97ca565939460"
 }
 
 // PlayerName returns the desired name of the AI in the Necrowar game.

@@ -19,7 +19,7 @@ func (*StardashNamespace) Name() string {
 
 // Version returns the current version hash as last generated for the Stardash game.
 func (*StardashNamespace) Version() string {
-	return "0fa378e83ac567ebdf3e9805d3f130023f936e2740acda173d238b37f2b5d541"
+	return "68c0bb5f68b05c6c09f3779f98f24eab24ab3dcab33c1dbc315adb2746280319"
 }
 
 // PlayerName returns the desired name of the AI in the Stardash game.

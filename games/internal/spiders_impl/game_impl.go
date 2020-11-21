@@ -24,7 +24,7 @@ type GameImpl struct {
 	playersImpl            []spiders.Player
 	sessionImpl            string
 	spitSpeedImpl          int64
-	timeAddedPerTurnImpl   int64
+	timeAddedPerTurnImpl   float64
 	weavePowerImpl         int64
 	weaveSpeedImpl         int64
 	websImpl               []spiders.Web
@@ -105,7 +105,7 @@ func (gameImpl *GameImpl) SpitSpeed() int64 {
 
 // TimeAddedPerTurn returns the amount of time (in nano-seconds) added
 // after each player performs a turn.
-func (gameImpl *GameImpl) TimeAddedPerTurn() int64 {
+func (gameImpl *GameImpl) TimeAddedPerTurn() float64 {
 	return gameImpl.timeAddedPerTurnImpl
 }
 
@@ -213,7 +213,7 @@ func (gameImpl *GameImpl) DeltaMerge(
 		gameImpl.spitSpeedImpl = spidersDeltaMerge.Int(delta)
 		return true, nil
 	case "timeAddedPerTurn":
-		gameImpl.timeAddedPerTurnImpl = spidersDeltaMerge.Int(delta)
+		gameImpl.timeAddedPerTurnImpl = spidersDeltaMerge.Float(delta)
 		return true, nil
 	case "weavePower":
 		gameImpl.weavePowerImpl = spidersDeltaMerge.Int(delta)

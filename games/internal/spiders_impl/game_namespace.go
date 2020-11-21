@@ -19,7 +19,7 @@ func (*SpidersNamespace) Name() string {
 
 // Version returns the current version hash as last generated for the Spiders game.
 func (*SpidersNamespace) Version() string {
-	return "a8df6038306b6855bb35959d7698f8dcbf98f48e7e148de59fef940ccb241bdf"
+	return "7473e10ceaf71fdd2427213c49bd9c057dfbff688e2df5bed217f6025ceb0152"
 }
 
 // PlayerName returns the desired name of the AI in the Spiders game.

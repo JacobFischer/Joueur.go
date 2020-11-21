@@ -19,7 +19,7 @@ func (*PiratesNamespace) Name() string {
 
 // Version returns the current version hash as last generated for the Pirates game.
 func (*PiratesNamespace) Version() string {
-	return "d51fca49d06cb7164f9dbf9c3515ab0f9b5a17113a5946bddcc75aaba125967f"
+	return "f825c4335bcd797a42adf1941c8291f495076568c8ac4553d6ac8029a2b8f09c"
 }
 
 // PlayerName returns the desired name of the AI in the Pirates game.

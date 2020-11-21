@@ -19,7 +19,7 @@ func (*AnarchyNamespace) Name() string {
 
 // Version returns the current version hash as last generated for the Anarchy game.
 func (*AnarchyNamespace) Version() string {
-	return "2bc66f9a5d7babd553079e149c7466feb6f553935b608ff722872e195fbadab8"
+	return "40544d984d6fa262d5ff27c5059a64f819005eaed281a0bf44748eee49fa482d"
 }
 
 // PlayerName returns the desired name of the AI in the Anarchy game.

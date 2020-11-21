@@ -123,7 +123,7 @@ type Game interface {
 
 	// TimeAddedPerTurn is the amount of time (in nano-seconds) added
 	// after each player performs a turn.
-	TimeAddedPerTurn() int64
+	TimeAddedPerTurn() float64
 
 	// TurnsToOrbit is the number of turns it takes for a asteroid to
 	// orbit the sun. (Asteroids move after each players turn).

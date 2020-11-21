@@ -58,5 +58,5 @@ type Game interface {
 
 	// TimeAddedPerTurn is the amount of time (in nano-seconds) added
 	// after each player performs a turn.
-	TimeAddedPerTurn() int64
+	TimeAddedPerTurn() float64
 }

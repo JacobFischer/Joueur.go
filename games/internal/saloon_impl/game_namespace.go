@@ -19,7 +19,7 @@ func (*SaloonNamespace) Name() string {
 
 // Version returns the current version hash as last generated for the Saloon game.
 func (*SaloonNamespace) Version() string {
-	return "fbaeac2bae9020bdd5a8816cb9ae38215c277e4bf7874a2f70c3995cd8eee8d3"
+	return "cebb7b41d81a7b03bf474c069fff1333de164700e35114a2f39c88be22e19328"
 }
 
 // PlayerName returns the desired name of the AI in the Saloon game.

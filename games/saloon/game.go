@@ -84,7 +84,7 @@ type Game interface {
 
 	// TimeAddedPerTurn is the amount of time (in nano-seconds) added
 	// after each player performs a turn.
-	TimeAddedPerTurn() int64
+	TimeAddedPerTurn() float64
 
 	// TurnsDrunk is how many turns a Cowboy will be drunk for if a
 	// bottle breaks on it.
