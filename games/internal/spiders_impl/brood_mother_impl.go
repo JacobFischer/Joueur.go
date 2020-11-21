@@ -38,9 +38,12 @@ func (broodMotherImpl *BroodMotherImpl) Consume(spiderling spiders.Spiderling) b
 // Spawn runs logic that spawns a new Spiderling on the same Nest as this
 // BroodMother, consuming an egg.
 func (broodMotherImpl *BroodMotherImpl) Spawn(spiderlingType string) spiders.Spiderling {
-	return broodMotherImpl.RunOnServer("spawn", map[string]interface{}{
+	if obj, ok := broodMotherImpl.RunOnServer("spawn", map[string]interface{}{
 		"spiderlingType": spiderlingType,
-	}).(spiders.Spiderling)
+	}).(spiders.Spiderling); ok {
+		return obj
+	}
+	return nil
 }
 
 // InitImplDefaults initializes safe defaults for all fields in BroodMother.

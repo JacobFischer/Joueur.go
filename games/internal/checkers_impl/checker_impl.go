@@ -46,10 +46,13 @@ func (checkerImpl *CheckerImpl) IsMine() bool {
 // Move runs logic that moves the checker from its current location to the
 // given (x, y).
 func (checkerImpl *CheckerImpl) Move(x int64, y int64) checkers.Checker {
-	return checkerImpl.RunOnServer("move", map[string]interface{}{
+	if obj, ok := checkerImpl.RunOnServer("move", map[string]interface{}{
 		"x": x,
 		"y": y,
-	}).(checkers.Checker)
+	}).(checkers.Checker); ok {
+		return obj
+	}
+	return nil
 }
 
 // InitImplDefaults initializes safe defaults for all fields in Checker.

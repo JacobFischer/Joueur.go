@@ -42,9 +42,12 @@ func (youngGunImpl *YoungGunImpl) Tile() saloon.Tile {
 // CallIn runs logic that tells the YoungGun to call in a new Cowboy of the
 // given job to the open Tile nearest to them.
 func (youngGunImpl *YoungGunImpl) CallIn(job string) saloon.Cowboy {
-	return youngGunImpl.RunOnServer("callIn", map[string]interface{}{
+	if obj, ok := youngGunImpl.RunOnServer("callIn", map[string]interface{}{
 		"job": job,
-	}).(saloon.Cowboy)
+	}).(saloon.Cowboy); ok {
+		return obj
+	}
+	return nil
 }
 
 // InitImplDefaults initializes safe defaults for all fields in YoungGun.

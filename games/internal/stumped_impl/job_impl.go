@@ -77,9 +77,12 @@ func (jobImpl *JobImpl) Title() string {
 
 // Recruit runs logic that recruits a Beaver of this Job to a lodge.
 func (jobImpl *JobImpl) Recruit(tile stumped.Tile) stumped.Beaver {
-	return jobImpl.RunOnServer("recruit", map[string]interface{}{
+	if obj, ok := jobImpl.RunOnServer("recruit", map[string]interface{}{
 		"tile": tile,
-	}).(stumped.Beaver)
+	}).(stumped.Beaver); ok {
+		return obj
+	}
+	return nil
 }
 
 // InitImplDefaults initializes safe defaults for all fields in Job.

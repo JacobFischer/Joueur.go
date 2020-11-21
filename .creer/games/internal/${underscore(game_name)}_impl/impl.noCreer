@@ -85,14 +85,20 @@ func (${lowercase_first(obj_name)}Impl *${obj_name}Impl) ${upcase_first(attr_nam
 		args = ', '.join([argify(a) for a in func['arguments']])
 		longest_arg_length = longest_str_len([arg['name'] for arg in func['arguments']])
 		return_end = '})' + (('.('+ ret_type +')') if ret_type else '')
+		could_be_nil = bool(ret_type and func['returns']['type']['nullable'])
+		nil_check = """; ok {
+		return obj
+	}
+	return nil
+""" if could_be_nil else '\n'
 %>
 ${lowercase_first(shared['go']['doc_string'](func_name + ' runs logic that', func))}
 func (${lowercase_first(obj_name)}Impl *${obj_name}Impl) ${upcase_first(func_name)}(${args})${(' '+ret_type) if ret_type else ''} {
-	${'return ' if ret_type else ''}${lowercase_first(obj_name)}Impl.RunOnServer("${func_name}", map[string]interface{}{${return_end if not func['arguments'] else ''}
+	${'return ' if ret_type and not could_be_nil else ''}${'if obj, ok := ' if could_be_nil else ''}${lowercase_first(obj_name)}Impl.RunOnServer("${func_name}", map[string]interface{}{${return_end if not func['arguments'] else ''}
 %		for arg in func['arguments']:
 		"${arg['name']}":${' ' * (1 + longest_arg_length - len(arg['name']))}${shared['go']['variable_name_safe'](arg['name'])},
 %		endfor
-${('\t' + return_end + '\n') if func['arguments'] else ''}}
+${('\t' + return_end + nil_check) if func['arguments'] else ''}}
 %   endfor
 
 // InitImplDefaults initializes safe defaults for all fields in ${obj_name}.
