@@ -1,0 +1,69 @@
+goroutine 1400 [running]:
+runtime/pprof.writeGoroutineStacks(0xc08ba0, 0xc0002a21c0, 0x0, 0x0)
+	/home/travis/.gimme/versions/go1.13.linux.amd64/src/runtime/pprof/pprof.go:679 +0x9d
+runtime/pprof.writeGoroutine(0xc08ba0, 0xc0002a21c0, 0x2, 0x40dbd6, 0xc000186840)
+	/home/travis/.gimme/versions/go1.13.linux.amd64/src/runtime/pprof/pprof.go:668 +0x44
+runtime/pprof.(*Profile).WriteTo(0xff8cc0, 0xc08ba0, 0xc0002a21c0, 0x2, 0xc0002a21c0, 0xd)
+	/home/travis/.gimme/versions/go1.13.linux.amd64/src/runtime/pprof/pprof.go:329 +0x3da
+net/http/pprof.handler.ServeHTTP(0xc001f4c461, 0x9, 0xc141a0, 0xc0002a21c0, 0xc000e40700)
+	/home/travis/.gimme/versions/go1.13.linux.amd64/src/net/http/pprof/pprof.go:245 +0x33a
+net/http/pprof.Index(0xc141a0, 0xc0002a21c0, 0xc000e40700)
+	/home/travis/.gimme/versions/go1.13.linux.amd64/src/net/http/pprof/pprof.go:268 +0x6f1
+net/http.HandlerFunc.ServeHTTP(0xb56c90, 0xc141a0, 0xc0002a21c0, 0xc000e40700)
+	/home/travis/.gimme/versions/go1.13.linux.amd64/src/net/http/server.go:2007 +0x44
+net/http.(*ServeMux).ServeHTTP(0x1008740, 0xc141a0, 0xc0002a21c0, 0xc000e40700)
+	/home/travis/.gimme/versions/go1.13.linux.amd64/src/net/http/server.go:2387 +0x1bd
+net/http.serverHandler.ServeHTTP(0xc00015c1c0, 0xc141a0, 0xc0002a21c0, 0xc000e40700)
+	/home/travis/.gimme/versions/go1.13.linux.amd64/src/net/http/server.go:2802 +0xa4
+net/http.(*conn).serve(0xc000142000, 0xc157a0, 0xc0004ee080)
+	/home/travis/.gimme/versions/go1.13.linux.amd64/src/net/http/server.go:1890 +0x875
+created by net/http.(*Server).Serve
+	/home/travis/.gimme/versions/go1.13.linux.amd64/src/net/http/server.go:2927 +0x38e
+
+goroutine 1 [IO wait, 1 minutes]:
+internal/poll.runtime_pollWait(0x7f32f0a7ec38, 0x72, 0x0)
+	/home/travis/.gimme/versions/go1.13.linux.amd64/src/runtime/netpoll.go:184 +0x55
+internal/poll.(*pollDesc).wait(0xc00011db18, 0x72, 0x0, 0x0, 0xab772d)
+	/home/travis/.gimme/versions/go1.13.linux.amd64/src/internal/poll/fd_poll_runtime.go:87 +0x45
+internal/poll.(*pollDesc).waitRead(...)
+	/home/travis/.gimme/versions/go1.13.linux.amd64/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Accept(0xc00011db00, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0)
+	/home/travis/.gimme/versions/go1.13.linux.amd64/src/internal/poll/fd_unix.go:384 +0x1f8
+net.(*netFD).accept(0xc00011db00, 0xc000107b28, 0x73dec4, 0xc00015c260)
+	/home/travis/.gimme/versions/go1.13.linux.amd64/src/net/fd_unix.go:238 +0x42
+net.(*TCPListener).accept(0xc0004f5f20, 0x5fb892c7, 0xc000107b28, 0x4897b6)
+	/home/travis/.gimme/versions/go1.13.linux.amd64/src/net/tcpsock_posix.go:139 +0x32
+net.(*TCPListener).Accept(0xc0004f5f20, 0xc000107b78, 0x18, 0xc000000180, 0x73d3de)
+	/home/travis/.gimme/versions/go1.13.linux.amd64/src/net/tcpsock.go:261 +0x47
+net/http.(*Server).Serve(0xc00015c1c0, 0xc13ee0, 0xc0004f5f20, 0x0, 0x0)
+	/home/travis/.gimme/versions/go1.13.linux.amd64/src/net/http/server.go:2896 +0x286
+net/http.(*Server).ListenAndServe(0xc00015c1c0, 0xc00015c1c0, 0xc000142640)
+	/home/travis/.gimme/versions/go1.13.linux.amd64/src/net/http/server.go:2825 +0xb7
+net/http.ListenAndServe(...)
+	/home/travis/.gimme/versions/go1.13.linux.amd64/src/net/http/server.go:3080
+main.main()
+	/home/travis/gopath/pkg/mod/golang.org/x/tools@v0.0.0-20191213221258-04c2e8eff935/cmd/godoc/main.go:364 +0xb42
+
+goroutine 299 [chan receive, 1 minutes]:
+golang.org/x/tools/godoc.(*Corpus).refreshMetadataLoop(0xc0001b2000)
+	/home/travis/gopath/pkg/mod/golang.org/x/tools@v0.0.0-20191213221258-04c2e8eff935/godoc/meta.go:140 +0x38
+created by golang.org/x/tools/godoc.(*Corpus).Init
+	/home/travis/gopath/pkg/mod/golang.org/x/tools@v0.0.0-20191213221258-04c2e8eff935/godoc/corpus.go:149 +0x82
+
+goroutine 1451 [IO wait]:
+internal/poll.runtime_pollWait(0x7f32f0a7edd8, 0x72, 0xffffffffffffffff)
+	/home/travis/.gimme/versions/go1.13.linux.amd64/src/runtime/netpoll.go:184 +0x55
+internal/poll.(*pollDesc).wait(0xc0008f0118, 0x72, 0x0, 0x1, 0xffffffffffffffff)
+	/home/travis/.gimme/versions/go1.13.linux.amd64/src/internal/poll/fd_poll_runtime.go:87 +0x45
+internal/poll.(*pollDesc).waitRead(...)
+	/home/travis/.gimme/versions/go1.13.linux.amd64/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Read(0xc0008f0100, 0xc00065c131, 0x1, 0x1, 0x0, 0x0, 0x0)
+	/home/travis/.gimme/versions/go1.13.linux.amd64/src/internal/poll/fd_unix.go:169 +0x1cf
+net.(*netFD).Read(0xc0008f0100, 0xc00065c131, 0x1, 0x1, 0xc0004ee118, 0xc000179768, 0x46c2cc)
+	/home/travis/.gimme/versions/go1.13.linux.amd64/src/net/fd_unix.go:202 +0x4f
+net.(*conn).Read(0xc000010108, 0xc00065c131, 0x1, 0x1, 0x0, 0x0, 0x0)
+	/home/travis/.gimme/versions/go1.13.linux.amd64/src/net/net.go:184 +0x68
+net/http.(*connReader).backgroundRead(0xc00065c120)
+	/home/travis/.gimme/versions/go1.13.linux.amd64/src/net/http/server.go:677 +0x58
+created by net/http.(*connReader).startBackgroundRead
+	/home/travis/.gimme/versions/go1.13.linux.amd64/src/net/http/server.go:673 +0xd4
