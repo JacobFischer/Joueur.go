@@ -121,10 +121,10 @@ func (gameManager *GameManager) deSerialize(data interface{}) interface{} {
 		_, isFloat := data.(float64)
 		_, isBool := data.(bool)
 
-		if !isString && !isInt && !isFloat && !isBool {
+		if !isString && !isInt && !isFloat && !isBool && data != nil {
 			errorhandler.HandleError(
 				errorhandler.ReflectionFailed,
-				errors.New("Could no deSerialize data"),
+				errors.New("Could not deSerialize data"),
 			)
 		}
 
